@@ -5,148 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rui Tian | Academic Portfolio</title>
     <style>
-        :root { --primary: #2c3e50; --secondary: #3498db; --accent: #e74c3c; --bg: #f4f7f6; --text: #333; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); max-width: 1000px; margin: 0 auto; padding: 40px 20px; background: var(--bg); }
-        header { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; border-top: 6px solid var(--primary); margin-bottom: 30px; }
-        h1 { margin: 0; font-size: 2.8em; color: var(--primary); }
-        .contact-info { margin: 15px 0; font-size: 1.1em; }
-        .contact-info a { color: var(--secondary); text-decoration: none; margin: 0 10px; }
-        .btn-group { margin-top: 20px; }
-        .cv-btn { background: var(--primary); color: white !important; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .cv-btn:hover { background: var(--secondary); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        
-        .section { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; display: flex; align-items: center; }
-        h2::before { content: "▹"; margin-right: 10px; color: var(--secondary); }
-        
-        .item { margin-bottom: 25px; }
-        .item-header { display: flex; justify-content: space-between; font-weight: bold; color: #444; font-size: 1.1em; }
-        .item-sub { color: var(--secondary); font-style: italic; margin-bottom: 8px; }
-        
-        .pub-item { margin-bottom: 30px; padding-left: 15px; border-left: 4px solid #eee; transition: 0.3s; }
-        .pub-item:hover { border-left-color: var(--secondary); }
-        .me { font-weight: bold; text-decoration: underline; color: #000; }
-        .highlight { display: block; background: #f9f9f9; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.92em; border-left: 4px solid var(--secondary); color: #555; }
-        .contribution { font-size: 0.88em; color: #2980b9; font-weight: 600; }
-        .pdf-link { color: var(--accent); font-weight: bold; text-decoration: none; margin-left: 10px; font-size: 0.9em; border: 1px solid var(--accent); padding: 1px 6px; border-radius: 4px; }
-        .pdf-link:hover { background: var(--accent); color: white; }
+        :root {
+            --primary: #1a3c5e;
+            --accent: #c5a059;
+            --text: #2c3e50;
+            --light-bg: #f4f7f9;
+        }
 
-        .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .tag { background: #eee; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; margin: 4px; display: inline-block; }
-        
-        @media (max-width: 768px) { .item-header { flex-direction: column; } .skills-container { grid-template-columns: 1fr; } }
+        body {
+            font-family: 'Optima', 'Palatino', 'Segoe UI', serif;
+            background-color: #fff;
+            color: var(--text);
+            margin: 0; padding: 0; line-height: 1.6;
+        }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 40px; }
+
+        header {
+            text-align: left;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+        }
+
+        header h1 { font-size: 3.5em; margin: 0; letter-spacing: 5px; color: var(--primary); font-weight: 300; }
+        .contact { font-size: 1.1em; color: #7f8c8d; margin-top: 10px; }
+
+        .layout { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
+
+        h2 {
+            font-size: 1.4em; color: var(--primary); text-transform: uppercase;
+            letter-spacing: 2px; border-left: 5px solid var(--accent);
+            padding-left: 15px; margin: 40px 0 20px 0;
+        }
+
+        /* 教育与经历 */
+        .item { margin-bottom: 25px; }
+        .item-header { display: flex; justify-content: space-between; font-weight: bold; color: var(--primary); }
+        .courses { font-size: 0.9em; color: #666; font-style: italic; margin-top: 5px; }
+
+        /* 文献列表 */
+        .pub-list { list-style: none; padding: 0; }
+        .pub-item { margin-bottom: 35px; position: relative; }
+        .authors { font-size: 0.95em; color: #555; }
+        .me { font-weight: bold; text-decoration: underline; color: #000; }
+        .abstract { font-size: 0.9em; color: #666; background: #fafafa; padding: 10px; border-radius: 4px; margin: 8px 0; border: 1px solid #f0f0f0; }
+        .contrib { font-size: 0.85em; color: var(--accent); font-weight: bold; }
+
+        /* 侧边栏图片 */
+        .sidebar { position: sticky; top: 20px; }
+        .visual-card {
+            background: #fff; border: 1px solid #eee; padding: 15px;
+            border-radius: 10px; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .visual-img {
+            width: 100%; height: 200px; background: #f0f0f0; border-radius: 6px;
+            margin-bottom: 10px; display: flex; align-items: center; justify-content: center;
+            color: #ccc; font-size: 0.8em; background-size: cover; background-position: center;
+        }
+        .arrow-hint {
+            color: var(--accent); font-size: 1.2em; font-weight: bold;
+            display: flex; align-items: center; margin-bottom: 10px;
+        }
+        .arrow-hint::before { content: "➤"; margin-right: 10px; animation: slide 1.5s infinite; }
+
+        @keyframes slide { 0% { transform: translateX(0); } 50% { transform: translateX(10px); } 100% { transform: translateX(0); } }
+
+        .tag { display: inline-block; background: #eee; padding: 3px 10px; border-radius: 4px; font-size: 0.85em; margin: 2px; }
+
+        @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .sidebar { position: static; } }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Rui Tian (田瑞)</h1>
-    <div class="contact-info">
-        <a href="mailto:christy.terence0111@gmail.com">📧 Email</a> | 
-        <span>📞 (+86) 152 2391 4429</span> | 
-        <span>📍 Chongqing, China</span>
-    </div>
-    <div class="btn-group">
-        <a href="CV-Rui-Tian.pdf" class="cv-btn" target="_blank">Download Full CV (PDF)</a>
-    </div>
-</header>
-
-<div class="section">
-    <h2>Education</h2>
-    <div class="item">
-        <div class="item-header"><span>Xiamen University</span><span>09/2019 - 06/2022</span></div>
-        <div class="item-sub">Master of Translational Medicine (Biomedicine)</div>
-        <ul>
-            <li><strong>Core Research:</strong> Focused on Molecular Vaccinology and Oncolytic Virus therapy.</li>
-            <li><strong>Key Achievement:</strong> Completed high-level research in the State Key Laboratory of Molecular Vaccinology and Molecular Diagnostics.</li>
-        </ul>
-    </div>
-    <div class="item">
-        <div class="item-header"><span>Chongqing Medical University</span><span>09/2015 - 06/2019</span></div>
-        <div class="item-sub">Bachelor of Sanitary Inspection and Quarantine</div>
-        <ul>
-            <li><strong>Academic Rank: 3/82 (Top 3.7%)</strong></li>
-            <li><strong>GPA: 3.65/4.0</strong></li>
-            <li>Consistent recipient of First-Class Academic Scholarships for four consecutive years.</li>
-        </ul>
-    </div>
-</div>
-
-<div class="section">
-    <h2>Research & Professional Experience</h2>
-    <div class="item">
-        <div class="item-header"><span>Project Leader | Xiamen University</span><span>2020 - 2022</span></div>
-        <p><strong>Host Intrinsic Restriction Factors for oHSV-1 Resistance:</strong> 
-        Constructed a systemic screening platform using RNA-seq to identify 16 interferon-related genes (IRGs). Personally generated 16 CRISPR/Cas9 knockout cell lines to validate these HIR factors, providing critical insights into viral resistance mechanisms in cancer cells.</p>
-    </div>
-    <div class="item">
-        <div class="item-header"><span>Research Associate | Chongqing University Cancer Hospital</span><span>2023 - Present</span></div>
-        <p><strong>Cancer Metastasis & Epigenetics:</strong> 
-        Investigating the role of DNA methylation markers in non-small cell lung cancer (NSCLC) and drug sensitivity in triple-negative breast cancer (TNBC). Managing BSL-2 laboratory operations, supervising molecular cloning, and conducting complex data analysis using R.</p>
-    </div>
-</div>
-
-<div class="section">
-    <h2>Technical Skills</h2>
-    <div class="skills-container">
-        <div>
-            <strong>Laboratory Techniques (Wet Lab)</strong><br>
-            <span class="tag">CRISPR/Cas9</span> <span class="tag">Oncolytic Virus Production</span> 
-            <span class="tag">Viral Titration</span> <span class="tag">Flow Cytometry (FACS)</span>
-            <span class="tag">Confocal Microscopy</span> <span class="tag">Western Blot/Co-IP</span>
-            <span class="tag">Animal Models (Mice)</span> <span class="tag">Molecular Cloning</span>
+<div class="container">
+    <header>
+        <h1>RUI TIAN</h1>
+        <div class="contact">
+            📧 christy.terence0111@gmail.com &nbsp;&nbsp; | &nbsp;&nbsp; 📞 (+86) 152 2391 4429
         </div>
-        <div>
-            <strong>Computational & Analysis (Dry Lab)</strong><br>
-            <span class="tag">R Programming</span> <span class="tag">RNA-seq Analysis</span> 
-            <span class="tag">Bioinformatics Pipeline</span> <span class="tag">GraphPad Prism</span> 
-            <span class="tag">ImageJ/Fiji</span> <span class="tag">Statistical Modeling</span>
-        </div>
+    </header>
+
+    <div class="layout">
+        <main>
+            <section>
+                <h2>Education</h2>
+                <div class="item">
+                    <div class="item-header"><span>Xiamen University</span><span>2019 - 2022</span></div>
+                    <div>M.S. in Translational Medicine (Biomedicine) | GPA: 84/100</div>
+                    <div class="courses">Key Courses: Biological Products, Science Writing, Advanced Molecular Biology.</div>
+                </div>
+                <div class="item">
+                    <div class="item-header"><span>Chongqing Medical University</span><span>2015 - 2019</span></div>
+                    <div>B.S. in Sanitary Inspection and Quarantine | Rank: 3/82 (Top 3.7%)</div>
+                    <div class="courses">Key Courses: Medical Immunology, Genetic Medicine, Basic Computer Programming.</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Research Experience</h2>
+                <div class="item">
+                    <strong>1. Host Intrinsic Restriction Factors for oHSV-1</strong>
+                    <ul>
+                        <li>Identified 16 IRGs upregulated after oHSV-1 infection via RNA-seq.</li>
+                        <li>Generated 16 CRISPR/Cas9 knockout cell lines to validate resistance factors.</li>
+                        <li>Uncovered infection mechanisms using R programming and Immunoprecipitation.</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <strong>2. Identification of Crucial Epitope of HSV gD</strong>
+                    <ul>
+                        <li>Screened 5 potent NAbs and identified a conserved continuous epitope (262–272 aa).</li>
+                        <li>Verified antibody-receptor (Nectin-1) blockade through neutralization assays.</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <strong>3. Construction of Humanized Mice Models</strong>
+                    <ul>
+                        <li>Established CD34+ HSC/PBMC humanized models for immunotherapy evaluation.</li>
+                        <li>Analyzed human immune cell reconstitution and in vivo anti-tumor efficacy.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Publications</h2>
+                <div class="pub-list">
+                    <div class="pub-item">
+                        <span class="pub-title"><strong>[1]</strong> A potent neutralizing and protective antibody against a conserved continuous epitope on HSV glycoprotein D</span><br>
+                        <span class="authors"><span class="me">Rui Tian</span>, Y. Han, J. Guo, et al. <em>Antiviral Research</em>, 2022.</span>
+                        <div class="abstract">Identified a potent NAb (mAb 2C10) targeting a conserved continuous epitope on gD, effectively blocking Nectin-1 interaction.</div>
+                        <span class="contrib">My Contribution: Manuscript writing, data processing, antibody identification & evaluation, cell culture, and epitope exploration.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-title"><strong>[2]</strong> Oncolytic virus expressing PD-1 inhibitors activates collaborative intratumoral immune response</span><br>
+                        <span class="authors">F. Ju, ..., <span class="me">Rui Tian</span>, et al. <em>Journal for ImmunoTherapy of Cancer</em>, 2022.</span>
+                        <div class="abstract">Developed oHSV-scFv-PD-1 to deliver PD-1 inhibitors locally, enhancing anti-tumor efficacy and T-cell activation.</div>
+                        <span class="contrib">My Contribution: Involved in cell culture, viral production, titration, and data processing.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-title"><strong>[3]</strong> The tumor suppressor DACT3 sensitizes TNBC to apatinib via Wnt/β-catenin pathway</span><br>
+                        <span class="authors">J. Wu, <span class="me">Rui Tian</span>, et al. <em>Translational Oncology</em>, 2025.</span>
+                        <span class="contrib">My Contribution: Molecular/cellular guidance, cell culture, data analysis, and manuscript revision.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-title"><strong>[4]</strong> The novel DNA methylation marker FIBIN suppresses non-small cell lung cancer metastasis</span><br>
+                        <span class="authors">M. Peng, ..., <span class="me">Rui Tian</span>, et al. <em>Cellular Signalling</em>, 2024.</span>
+                        <span class="contrib">My Contribution: Involved in data analysis and manuscript revision.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-title"><strong>[5]</strong> PDCD2 as a prognostic biomarker in glioma correlates with malignant phenotype</span><br>
+                        <span class="authors">F. Dai, ..., <span class="me">Rui Tian</span>, et al. <em>Genes & Diseases</em>, 2023.</span>
+                        <span class="contrib">My Contribution: Involved in data analysis and manuscript revision.</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div class="visual-card">
+                <div class="arrow-hint">Research Highlight [1]</div>
+                <div class="visual-img" style="background-image: url('fig1.jpg');">Epitope & Receptor Blockade</div>
+                <p style="font-size: 0.8em; color: #666;">Discovery of mAb 2C10 targeting gD conserved epitope.</p>
+            </div>
+
+            <div class="visual-card">
+                <div class="arrow-hint">Research Highlight [2]</div>
+                <div class="visual-img" style="background-image: url('fig2.jpg');">oHSV-PD-1 Synergy</div>
+                <p style="font-size: 0.8em; color: #666;">Collaborative intratumoral immune response visualization.</p>
+            </div>
+
+            <h2>Skills</h2>
+            <div class="item">
+                <strong>Wet Lab:</strong><br>
+                <div class="tag">Cell Culture</div> <span class="tag">CRISPR/Cas9</span> <span class="tag">Lentiviral Platforms</span>
+                <span class="tag">Viral Titration</span> <span class="tag">IP</span> <span class="tag">Flow Cytometry</span>
+                <span class="tag">Humanized Mouse Models</span>
+            </div>
+            <div class="item">
+                <strong>Dry Lab:</strong><br>
+                <div class="tag">R Programming</div> <span class="tag">RNA-seq</span> <span class="tag">GraphPad</span>
+            </div>
+
+            <h2>Honors</h2>
+            <div style="font-size: 0.9em; line-height: 1.8;">
+                • Wan Fu Biology Award (2022)<br>
+                • Innovation Award (Top 3%, 2022)<br>
+                • Excellent Thesis (Top 1%, 2019)
+            </div>
+        </aside>
     </div>
-</div>
-
-<div class="section">
-    <h2>Selected Publications</h2>
-
-    <div class="pub-item">
-        <span class="me">Rui Tian</span>, et al. "A potent neutralizing and protective antibody against a conserved continuous epitope on HSV glycoprotein D." <em>Antiviral Research</em>, 2022. <a href="pub1.pdf" class="pdf-link" target="_blank">PDF</a>
-        <span class="highlight"><strong>Key Finding:</strong> Discovery of a potent NAb that targets a highly conserved epitope on HSV-1/2, offering a new avenue for clinical immunotherapy.</span>
-        <span class="contribution"><strong>My Contribution:</strong> Lead author; led experimental design, antibody identification, epitope mapping, and primary manuscript writing.</span>
-    </div>
-
-    <div class="pub-item">
-        Fei Ju, ..., <span class="me">Rui Tian</span>, et al. "Oncolytic virus expressing PD-1 inhibitors activates a collaborative intratumoral immune response..." <em>JITC</em>, 2022. <a href="pub2.pdf" class="pdf-link" target="_blank">PDF</a>
-        <span class="highlight"><strong>Key Finding:</strong> Demonstrated that oHSV-delivered PD-1 blockade significantly enhances T-cell infiltration and anti-tumor efficacy.</span>
-        <span class="contribution"><strong>My Contribution:</strong> Responsible for cell culture maintenance, large-scale viral production, titration, and assisting in in vivo data collection.</span>
-    </div>
-
-    <div class="pub-item">
-        Jing Wu, <span class="me">Rui Tian</span>, et al. "The tumor suppressor DACT3 sensitizes triple-negative breast cancer to apatinib..." <em>Translational Oncology</em>, 2025. <a href="pub5.pdf" class="pdf-link" target="_blank">PDF</a>
-        <span class="highlight"><strong>Key Finding:</strong> Revealed DACT3 expression as a reliable biomarker for predicting clinical response to apatinib in TNBC.</span>
-        <span class="contribution"><strong>My Contribution:</strong> Guided molecular mechanism experiments and performed statistical validation of clinical data.</span>
-    </div>
-
-    <div class="pub-item">
-        Mingyu Peng, ..., <span class="me">Rui Tian</span>, et al. "The novel DNA methylation marker FIBIN suppresses non-small cell lung cancer metastasis..." <em>Cellular Signalling</em>, 2024. <a href="pub4.pdf" class="pdf-link" target="_blank">PDF</a>
-        <span class="highlight"><strong>Key Finding:</strong> Identified FIBIN as a novel tumor suppressor whose methylation-driven silencing promotes lung cancer metastasis.</span>
-        <span class="contribution"><strong>My Contribution:</strong> Conducted bioinformatics analysis of TCGA data and assisted in manuscript revision.</span>
-    </div>
-
-    <div class="pub-item">
-        Fengsheng Dai, ..., <span class="me">Rui Tian</span>, et al. "PDCD2 as a prognostic biomarker in glioma..." <em>Genes & Diseases</em>, 2023. <a href="pub3.pdf" class="pdf-link" target="_blank">PDF</a>
-        <span class="highlight"><strong>Key Finding:</strong> Validated PDCD2 as a crucial prognostic indicator linked to the malignant phenotype of gliomas.</span>
-        <span class="contribution"><strong>My Contribution:</strong> Performed bioinformatics screening and created high-quality data visualizations for the publication.</span>
-    </div>
-</div>
-
-<div class="section">
-    <h2>Honors & Awards</h2>
-    <ul>
-        <li><strong>First-Class Academic Scholarship</strong>, Chongqing Medical University (2015, 2016, 2017, 2018)</li>
-        <li><strong>Outstanding Graduate Award</strong>, Chongqing Medical University (2019)</li>
-        <li><strong>Third Prize</strong>, National English Competition for College Students (NECCS)</li>
-        <li><strong>Second Prize</strong>, "Challenge Cup" College Students Extracurricular Academic Science and Technology Works Competition (Provincial Level)</li>
-    </ul>
 </div>
 
 </body>
